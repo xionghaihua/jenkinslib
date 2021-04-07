@@ -1,0 +1,19 @@
+@Library('jenkinslib@master') _
+
+pipeline{
+  agent{
+    node{
+      label "master"
+    }
+  }
+  stages{
+    stage("build"){
+      steps{
+        script {
+          mvnHome = tools 'M3'
+          sh "${mvnHome}/bin/mvn -v"
+        }
+      }
+    }
+ }
+}
